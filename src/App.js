@@ -1,25 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
-
+import EditorJS from '@editorjs/editorjs';
+import Header from '@editorjs/header'; 
+import { useRef } from 'react';
 function App() {
+  const editor = new EditorJS({
+    holder: 'editorjs',
+  });
+  const instanceRef = useRef(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <EditorJS instanceRef={(instance)=>(instanceRef.current = instance)} tools={{header: Header}} data={{}}></EditorJS>
   );
 }
-
 export default App;
